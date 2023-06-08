@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container-fluid" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-danger" role="alert" style="font-size: 30px;text-align: center;">
+                   <b>SIMPLE CRUD OPERATION</b> 
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container"  >
+        <div class="row">
+            <div class="col-md-12" > 
+                <form method="POST" class="p-3 shadow">
+                {% csrf_token %}
+                
+                    <div class="form-group">
+                    <h6>SL.NO:</h6>
+                    <input type="number" name="slnum" class="form-control"  placeholder="serialnumber" required >
+                    </div><br>
+                    <div class="form-group">
+                        <h6>Item Name</h6>
+                        <input type="text" name="name" class="form-control" placeholder="item name">
+                    </div><br>
+                    <div class="form-group">
+                        <h6>Description</h6>
+                        <input type="text" name="desc" class="form-control" placeholder="description">
+                    </div><br>
+                    <!-- <a  type="submit" class="btn btn-success">Create</a> -->
+                    <input type="submit" class="btn-success">
+                    <!-- <button type="button" class="btn btn-success">create</button> -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h6>#</h6>
+            </div>
+            <div class="col">
+                <h6>Item name</h6>
+            </div>
+            <div class="col">
+                <h6>Description</h6>
+            </div>
+            <div class="col">
+                <h6>Action</h6>
+                
+            </div>
+
+        </div>
+        
+    </div>
+</div>
+
+<div>
+    <div class="container">
+        {% for i in task1 %}
+        <div class="row mt-3">
+            
+            <div class="col">
+                <h6>{{i.slnum}}</h6>
+            </div>
+            <div class="col">
+                <h6>{{i.name}}</h6>
+            </div>
+            <div class="col">
+                <h6>{{i.desc}}</h6>
+            </div>
+            <div class="col">
+                
+                <a href="{% url 'update' i.id %}" class="btn btn-warning">Update</a>
+                <a href="{% url 'delete' i.id %}" class="btn btn-danger">Delete</a>
+
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock %}
+
+               
+
+    
+    
